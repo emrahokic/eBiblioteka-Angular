@@ -1,0 +1,47 @@
+<mat-drawer-container class="example-container" autosize>
+  <!--  <img style="position: absolute; object-fit: cover" src="./assets/Group%2031.png"  alt="bg" height="100%" width="100%">-->
+
+  <mat-drawer  #drawer [opened]="isOpened" class="sidenav-bg " [class.example-sidenav]="!isSmallScreen" [class.example-sidenav-small]="isSmallScreen" [mode]="mode">
+
+    <nav style="background-color: #59CBD3" class="navbar sticky-top">
+      <!--  <a class="navbar-brand" href="#" mat-button type="button">aa</a>-->
+      <a routerLink="/home" style="margin: 2px; color: white" class="navbar-brand" >
+        <img src="../../assets/books-stack.png" width="30" height="30" class="d-inline-block align-top" alt="" >
+        <p style="display: inline-block;margin-left: 10px;margin-top: 5px">eBiblioteka</p></a>
+
+
+      <ul class="nav justify-content-end">
+        <button mat-flat-button matTooltip="Side Navigation" class="nav-item" *ngIf="isSmallScreen" (click)="drawer.toggle()">  <mat-icon style="color: #59CBD3">menu_open</mat-icon></button>
+
+
+      </ul>
+    </nav>
+
+   <!-- <div class="row" style="margin-top: 15px">
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-flat-button matTooltip="Side Navigation"  *ngIf="isSmallScreen" (click)="drawer.toggle()">  <mat-icon color="accent">menu_open</mat-icon></button>
+      </div>
+
+
+    </div>-->
+
+        <mat-selection-list #shoes [multiple]="false">
+          <mat-list-option *ngFor="let shoe of typesOfShoes; let i = index" matListIcon="home" #item [class.ItemBorder]="item.selected" (click)="isSmallScreen || !isOpened ? drawer.close() : null" routerLink="{{shoe.Path}}" style="font: initial;color: white;{{shoe.Style}}" [value]="shoe">
+            <mat-icon style="opacity: 0.5" mat-list-icon>{{shoe.Icon}}</mat-icon>
+            {{shoe.Name}}
+          </mat-list-option>
+        </mat-selection-list>
+<!--    <div style="display: inline-block; width: 100%;text-align: center;margin-top: 20px">-->
+
+<!--      <button  type="submit" style="width: 100px" mat-flat-button routerLink="/auth" color="accent">Logout</button>-->
+<!--    </div>-->
+  </mat-drawer>
+  <app-dashboard-navbar (onNotificationSwitchEM)="onNotificationSwitch()"  (onSideNaveSwitch)="drawer.toggle()"></app-dashboard-navbar>
+  <app-notifications  [class.fade-in]="isNotificationOpen" *ngIf="isNotificationOpen" [class.small]="isSmallScreen || !isOpened" ></app-notifications>
+
+  <div class="example-sidenav-content" style="background-color: white">
+    <router-outlet></router-outlet>
+  </div>
+
+
+</mat-drawer-container>

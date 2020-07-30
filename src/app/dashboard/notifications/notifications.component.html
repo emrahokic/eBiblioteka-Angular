@@ -1,0 +1,20 @@
+<div class="notifications-box shadow ">
+
+<div  >
+
+  <h2 style=";margin-top: 10px;margin-left:10px;color: gray">
+    Notifications
+  </h2>
+
+  <mat-divider style="width: 50%; justify-self: center"></mat-divider>
+
+  <mat-list style="padding: 10px" >
+    <mat-list-item *ngFor="let item of data" matListIcon="home"   >
+      <h4  mat-line >{{item.clan}}</h4>
+      <p style="word-break: break-all" mat-line>{{item.opis}}</p>
+      <p style="font-size: 10px" mat-line>{{item.datum | date : "dd.MM.yyyy hh.mm"}} </p>
+      <img mat-list-avatar [src]="item.clanImage"  style="width: 55px; height:55px;">
+    </mat-list-item>
+  </mat-list>
+</div>
+</div>

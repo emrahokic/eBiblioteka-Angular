@@ -1,0 +1,34 @@
+.box{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.box-header {
+  width: 100%;
+  min-height: 180px;
+  height: auto;
+  padding: 30px 30px 50px 30px;
+  border-radius: 10px;
+  background-image: url("../../assets/Path 18.png");
+  background-size: 100% 100%;
+}
+:host{
+  width: 93%;
+}
+.box-header .title{
+  font-size: 4vh;
+  font-weight: bold;
+  color: white;
+}
+
+.content {
+  margin: 15px;
+  min-height: 450px;
+}
+.mouseOver:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+

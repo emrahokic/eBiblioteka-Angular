@@ -1,0 +1,36 @@
+<mat-drawer-container class="example-container" autosize>
+  <!--  <img style="position: absolute; object-fit: cover" src="./assets/Group%2031.png"  alt="bg" height="100%" width="100%">-->
+
+  <mat-drawer #drawer class="example-sidenav"  [class.example-sidenav]="!isSmallScreen" [class.example-sidenav-small]="isSmallScreen" mode="side">
+    <button *ngIf="isSmallScreen" mat-flat-button matTooltip="Side Navigation" style="position: absolute; width: 40px;height: 40px;border-radius: 100px; right: 0; margin: 15px" (click)="onBtnClickClose()" aria-label="Example icon button with a home icon">
+      <mat-icon color="accent">close</mat-icon>
+    </button>
+    <router-outlet>
+
+  </router-outlet>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+
+    <img *ngIf="!isLogedIn" src="../../assets/Group%2032.png" style="width: 250px" alt="logo">
+    <a *ngIf="isLogedIn"  routerLink="/dashboard"><img   [src]="userImage"  style="background-color: white;object-fit: cover;width: 150px;cursor: pointer; height:150px;border-radius: 100px;margin-bottom: 20px;"></a>
+    <a *ngIf="isLogedIn" routerLink="/dashboard"><h1 style="cursor: pointer;color: white; margin-top: 10px" >Wellcome {{user}} !!</h1></a>
+    <div style="margin-top: 50px;text-align: center">
+
+      <button *ngIf="!isLogedIn" style="margin: 20px;border-radius: 50px; width: 110px; height: 40px"  mat-button mat-flat-button [routerLink]="'login'" (click)="onBtnClick()">
+        Login
+      </button>
+      <button *ngIf="isLogedIn" style="margin: 20px;border-radius: 50px; width: 200px; height: 40px" color="accent" mat-button mat-flat-button  (click)="onLogout()">
+        Logout
+      </button>
+      <button *ngIf="!isLogedIn" style=" margin: 20px;border-radius: 50px; width:110px; height: 40px" type="button" mat-button mat-flat-button [routerLink]="'register'"  (click)="onBtnClick()">
+        Register
+      </button>
+    </div>
+
+
+  </div>
+
+</mat-drawer-container>
